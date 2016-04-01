@@ -11,19 +11,22 @@ defined( '_JEXEC' ) or die;
 
 
 
+
 $items = $cck->getItems();
+
+
 
 
     $out = array();
    foreach( $items as $item ) {
-    $out[] = array( "nome" => $item->getValue('nome') ,"cidade" => $item->getValue('cidade'), "estado" => $item->getValue('estado'));
+    $out[] = array("Imagem" => $item->get('img_principal')->value, "nome" => $item->getValue('nome'),"cidade" => $item->getValue('cidade'), "estado" => $item->getValue('estado'));
 
 ?>
 
 
 <?php } ?>
 <?php
-$jso = json_encode($out, JSON_UNESCAPED_UNICODE);
+$jso = json_encode($out,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
 
 echo $jso;
